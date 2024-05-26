@@ -1,20 +1,26 @@
 const express = require('express');
 const cors = require('cors');
-const studentsRoutes = require('./routes/studentsRoutes');
-const coursesRoutes = require('./routes/coursesRoutes');
-const enrollmentsRoutes = require('./routes/enrollmentsRoutes');
-const instructorsRoutes = require('./routes/instructorsRoutes');
+const studentsRouter = require('./src/routes/studentsRouter');
+const coursesRouter = require('./src/routes/coursesRouter');
+const enrollmentsRouter = require('./src/routes/enrollmentsRouter');
+const instructorsRouter = require('./src/routes/instructorsRouter');
 
 const app = express();
-
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
-app.use('/api/students', studentsRoutes);
-app.use('/api/courses', coursesRoutes);
-app.use('/api/enrollments', enrollmentsRoutes);
-app.use('/api/instructors', instructorsRoutes);
+// Rota raiz
+app.get('/', (req, res) => {
+  res.send('Bem-vindo à API da University App!');
+});
 
-app.listen(3000, () => {
-  console.log('Servidor rodando na porta 3000');
+// Rotas
+app.use('/api/students', studentsRouter);
+app.use('/api/courses', coursesRouter);
+app.use('/api/enrollments', enrollmentsRouter);
+app.use('/api/instructors', instructorsRouter);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
