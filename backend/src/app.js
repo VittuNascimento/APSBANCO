@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const studentsRouter = require('./src/routes/studentsRouter');
-const coursesRouter = require('./src/routes/coursesRouter');
-const enrollmentsRouter = require('./src/routes/enrollmentsRouter');
-const instructorsRouter = require('./src/routes/instructorsRouter');
+const studentsRouter = require('./routes/studentsRouter');
+const coursesRouter = require('./routes/coursesRouter');
+const enrollmentsRouter = require('./routes/enrollmentsRouter');
+const instructorsRouter = require('./routes/instructorsRouter');
 
 const app = express();
 app.use(express.json());
